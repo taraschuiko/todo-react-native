@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Header from "./components/Header";
+import TodoList from "./components/TodoList";
 
 export default class App extends React.Component {
   state = {
@@ -21,6 +22,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Header />
+        <TodoList todos={this.state.todos} />
       </View>
     );
   }

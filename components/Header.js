@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   container: {
-    padding: 10
+    padding: 16
   },
   title: {
     fontSize: 22
