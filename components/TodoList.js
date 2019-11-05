@@ -8,7 +8,7 @@ export default function TodoList(props) {
       {
         props.todos.map(todo => {
           return (
-            <Todo key={todo.id} todo={todo} />
+            <Todo key={todo.id} todo={todo} completeTodo={props.completeTodo} />
           )
         })
       }

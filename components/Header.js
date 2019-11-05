@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     padding: 16
   },
   title: {
-    fontSize: 22
+    fontSize: 22,
+    fontWeight: '700'
   }
 });
