@@ -45,7 +45,11 @@ export default function reducer(state = initialState, action) {
       ...state,
       todos: [
         ...state.todos,
-        action.payload
+        {
+          id: Math.random(),
+          name: action.payload,
+          completed: false
+        }
       ]
     }
     case types.REMOVE: return {

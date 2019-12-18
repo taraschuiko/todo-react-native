@@ -10,7 +10,7 @@ import { actionCreators as actions } from "../reducers/todoReducer";
 export function TodoList(props) {
   return (
     <View style={styles.todoList}>
-      <NewTodo />
+      <NewTodo add={props.add} />
       {
         props.todos.map(todo => {
           return (
