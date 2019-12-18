@@ -1,9 +1,11 @@
 import React from "react";
 import { StyleSheet, TouchableHighlight, Text } from "react-native";
+import { types } from "../reducers/todoReducer";
 
 export default function Todo(props) {
+  const { store } = this.props;
   return (
-    <TouchableHighlight style={styles.todo} onPress={() => props.completeTodo(props.todo.id)}>
+    <TouchableHighlight style={styles.todo} onPress={() => store.dispatch(types.COMPLETE, props.todo.id)}>
       <Text style={styles.text, props.todo.completed && styles.textCompleted}>{props.todo.name}</Text>
     </TouchableHighlight>
   )
