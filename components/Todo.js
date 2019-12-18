@@ -6,12 +6,12 @@ export default function Todo(props) {
   return (
     <View style={styles.todo}>
       <Text
-        style={styles.text, props.todo.completed && styles.textCompleted}
+        style={[styles.title, props.todo.completed && styles.titleCompleted]}
         onPress={() => props.complete(props.todo.id)}
       >
         {props.todo.name}
       </Text>
-      <Text onPress={() => props.remove(props.todo.id)}>X</Text>
+      <Text style={styles.remove} onPress={() => props.remove(props.todo.id)}>X</Text>
     </View>
   )
 }
@@ -19,7 +19,6 @@ export default function Todo(props) {
 const styles = StyleSheet.create({
   todo: {
     width: "100%",
-    padding: 16,
     marginBottom: 8,
     borderWidth: 1,
     borderColor: "#ccc",
@@ -32,10 +31,15 @@ const styles = StyleSheet.create({
   switch: {
     marginRight: 8
   },
-  text: {
-    fontSize: 18
+  title: {
+    fontSize: 18,
+    padding: 16,
+    flex: 1
   },
-  textCompleted: {
+  titleCompleted: {
     textDecorationLine: "line-through"
+  },
+  remove: {
+    padding: 16
   }
 });
