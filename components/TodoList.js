@@ -14,7 +14,7 @@ export function TodoList(props) {
       {
         props.todos.map(todo => {
           return (
-            <Todo key={todo.id} todo={todo} completeTodo={props.completeTodo} />
+            <Todo key={todo.id} todo={todo} complete={props.complete} remove={props.remove} />
           )
         })
       }

@@ -1,27 +1,33 @@
 import React from "react";
-import { StyleSheet, TouchableHighlight, Text } from "react-native";
+import { StyleSheet, TouchableHighlight, Text, View } from "react-native";
 import { types } from "../reducers/todoReducer";
 
 export default function Todo(props) {
-  const { store } = this.props;
   return (
-    <TouchableHighlight style={styles.todo} onPress={() => store.dispatch(types.COMPLETE, props.todo.id)}>
-      <Text style={styles.text, props.todo.completed && styles.textCompleted}>{props.todo.name}</Text>
-    </TouchableHighlight>
+    <View style={styles.todo}>
+      <Text
+        style={styles.text, props.todo.completed && styles.textCompleted}
+        onPress={() => props.complete(props.todo.id)}
+      >
+        {props.todo.name}
+      </Text>
+      <Text onPress={() => props.remove(props.todo.id)}>X</Text>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   todo: {
-    width: '100%',
+    width: "100%",
     padding: 16,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 8,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
   },
   switch: {
     marginRight: 8
@@ -30,6 +36,6 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   textCompleted: {
-    textDecorationLine: 'line-through'
+    textDecorationLine: "line-through"
   }
 });
