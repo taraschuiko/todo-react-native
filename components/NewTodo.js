@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
+import { Button, Text, Item, Input } from "native-base";
 
 export default class NewTodo extends React.Component {
   state = {
@@ -22,13 +23,16 @@ export default class NewTodo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          style={styles.textInput}
-          value={this.state.name}
-          onChangeText={(text) => this.handleNameChange(text)}
-          onSubmitEditing={() => this.add()}
-        />
-        <Button title="Add" style={styles.button} onPress={() => this.add()}></Button>
+        <Item style={styles.textInput}>
+          <Input
+            value={this.state.name}
+            onChangeText={(text) => this.handleNameChange(text)}
+            onSubmitEditing={() => this.add()}
+          ></Input>
+        </Item>
+        <Button onPress={() => this.add()}>
+          <Text>Add</Text>
+        </Button>
       </View>
     )
   }
@@ -43,9 +47,6 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 16
+    marginRight: 8
   }
 })
