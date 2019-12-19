@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Button, Text, Item, Input } from "native-base";
 
 export default class NewTodo extends React.Component {
