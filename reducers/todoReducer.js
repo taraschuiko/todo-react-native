@@ -1,7 +1,8 @@
 export const types = {
   ADD: "ADD",
   REMOVE: "REMOVE",
-  COMPLETE: "COMPLETE"
+  COMPLETE: "COMPLETE",
+  REMOVE_COMPLETED: "REMOVE_COMPLETED"
 }
 
 export const actionCreators = {
@@ -16,27 +17,14 @@ export const actionCreators = {
   complete: id => ({
     type: types.COMPLETE,
     payload: id
+  }),
+  removeCompleted: () => ({
+    type: types.REMOVE_COMPLETED
   })
 }
 
 const initialState = {
-  todos: [
-    {
-      id: 349534,
-      name: "Buy water",
-      completed: false
-    },
-    {
-      id: 348234,
-      name: "Buy bread",
-      completed: true
-    },
-    {
-      id: 348814,
-      name: "Buy coffee",
-      completed: false
-    }
-  ]
+  todos: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -62,6 +50,10 @@ export default function reducer(state = initialState, action) {
         ...todo,
         completed: todo.id === action.payload ? !todo.completed : todo.completed,
       }))
+    }
+    case types.REMOVE_COMPLETED: return {
+      ...state,
+      todos: state.todos.filter(todo => !todo.completed)
     }
     default: return state
   }

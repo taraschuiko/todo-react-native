@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Todo from "./Todo";
 import NewTodo from "./NewTodo";
+import RemoveCompleted from "./RemoveCompleted";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -18,6 +19,10 @@ export function TodoList(props) {
           )
         })
       }
+      <RemoveCompleted
+        removeCompleted={props.removeCompleted}
+        todos={props.todos}
+      />
     </View>
   )
 }
@@ -40,7 +45,8 @@ function mapDispatchToProps(dispatch) {
   return {
     add: bindActionCreators(actions.add, dispatch),
     remove: bindActionCreators(actions.remove, dispatch),
-    complete: bindActionCreators(actions.complete, dispatch)
+    complete: bindActionCreators(actions.complete, dispatch),
+    removeCompleted: bindActionCreators(actions.removeCompleted, dispatch)
   }
 }
 
