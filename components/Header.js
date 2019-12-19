@@ -1,6 +1,6 @@
 import React from "react";
 import Constants from "expo-constants";
-import { StyleSheet, SafeAreaView, View, Text } from "react-native";
+import { StyleSheet, SafeAreaView, View, Text, Platform } from "react-native";
 
 export default function Header() {
   return (
@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   container: {
-    padding: 16
+    padding: 16,
+    paddingTop: Platform.OS === "android" ? 40 : 16
   },
   title: {
     fontSize: 22,

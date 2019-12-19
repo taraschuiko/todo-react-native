@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, Text, Item, Input } from "native-base";
+import { StyleSheet, View, TextInput, TouchableHighlight, Text, Platform } from 'react-native';
 
 export default class NewTodo extends React.Component {
   state = {
@@ -13,26 +12,27 @@ export default class NewTodo extends React.Component {
     }))
   }
 
-  add(name) {
-    this.props.add(this.state.name);
-    this.setState(() => ({
-      name: ""
-    }))
+  add() {
+    if (this.state.name.trim()) {
+      this.props.add(this.state.name);
+      this.setState(() => ({
+        name: ""
+      }))
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Item style={styles.textInput}>
-          <Input
-            value={this.state.name}
-            onChangeText={(text) => this.handleNameChange(text)}
-            onSubmitEditing={() => this.add()}
-          ></Input>
-        </Item>
-        <Button onPress={() => this.add()}>
-          <Text>Add</Text>
-        </Button>
+        <TextInput
+          style={styles.textInput}
+          value={this.state.name}
+          onChangeText={(text) => this.handleNameChange(text)}
+          onSubmitEditing={() => this.add()}
+        ></TextInput>
+        <TouchableHighlight style={styles.button} onPress={() => this.add()}>
+          <Text style={styles.buttonText}>Add</Text>
+        </TouchableHighlight>
       </View>
     )
   }
@@ -46,7 +46,25 @@ const styles = StyleSheet.create({
     marginBottom: 8
   },
   textInput: {
+    flex: 5,
+    marginRight: 8,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: Platform.OS === "android" ? 14 : 16,
+    fontSize: 18
+  },
+  button: {
     flex: 1,
-    marginRight: 8
+    padding: 16,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 8,
+    display: "flex",
+    justifyContent: "center"
+  },
+  buttonText: {
+    fontSize: 18,
+    textAlign: "center",
   }
 })

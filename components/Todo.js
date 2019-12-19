@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableHighlight, Text, View } from "react-native";
-import { types } from "../reducers/todoReducer";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function Todo(props) {
   return (
