@@ -30,7 +30,7 @@ export default class NewTodo extends React.Component {
           onChangeText={(text) => this.handleNameChange(text)}
           onSubmitEditing={() => this.add()}
         ></TextInput>
-        <TouchableHighlight style={styles.button} onPress={() => this.add()}>
+        <TouchableHighlight style={styles.button} underlayColor="#e0e0e0" onPress={() => this.add()}>
           <Text style={styles.buttonText}>Add</Text>
         </TouchableHighlight>
       </View>
