@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.taraschuiko",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.taraschuiko"
     }
   }
 }
