@@ -15,7 +15,7 @@ export function TodoList(props) {
       {
         props.todos.map(todo => {
           return (
-            <Todo key={todo.id} todo={todo} complete={props.complete} remove={props.remove} />
+            <Todo key={todo.id} todo={todo} complete={props.complete} remove={props.remove} edit={props.edit} />
           )
         })
       }
@@ -46,7 +46,8 @@ function mapDispatchToProps(dispatch) {
     add: bindActionCreators(actions.add, dispatch),
     remove: bindActionCreators(actions.remove, dispatch),
     complete: bindActionCreators(actions.complete, dispatch),
-    removeCompleted: bindActionCreators(actions.removeCompleted, dispatch)
+    removeCompleted: bindActionCreators(actions.removeCompleted, dispatch),
+    edit: bindActionCreators(actions.edit, dispatch)
   }
 }
 

@@ -2,7 +2,8 @@ export const types = {
   ADD: "ADD",
   REMOVE: "REMOVE",
   COMPLETE: "COMPLETE",
-  REMOVE_COMPLETED: "REMOVE_COMPLETED"
+  REMOVE_COMPLETED: "REMOVE_COMPLETED",
+  EDIT: "EDIT"
 }
 
 export const actionCreators = {
@@ -20,6 +21,10 @@ export const actionCreators = {
   }),
   removeCompleted: () => ({
     type: types.REMOVE_COMPLETED
+  }),
+  edit: todo => ({
+    type: types.EDIT,
+    payload: todo
   })
 }
 
@@ -54,6 +59,10 @@ export default function reducer(state = initialState, action) {
     case types.REMOVE_COMPLETED: return {
       ...state,
       todos: state.todos.filter(todo => !todo.completed)
+    }
+    case types.EDIT: return {
+      ...state,
+      todos: state.todos.map(todo => todo.id === action.payload.id ? action.payload : todo)
     }
     default: return state
   }
