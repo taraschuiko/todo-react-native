@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Todo from "./Todo";
 import NewTodo from "./NewTodo";
 import RemoveCompleted from "./RemoveCompleted";
@@ -10,7 +10,7 @@ import { actionCreators as actions } from "../reducers/todoReducer";
 
 export function TodoList(props) {
   return (
-    <View style={styles.todoList}>
+    <ScrollView style={styles.todoList} contentContainerStyle={{paddingBottom: 60}}>
       <NewTodo add={props.add} />
       {
         props.todos.map(todo => {
@@ -23,7 +23,7 @@ export function TodoList(props) {
         removeCompleted={props.removeCompleted}
         todos={props.todos}
       />
-    </View>
+    </ScrollView>
   )
 }
 
