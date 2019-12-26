@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function Todo(props) {
   return (
@@ -10,7 +11,8 @@ export default function Todo(props) {
       >
         {props.todo.name}
       </Text>
-      <Text style={styles.remove} onPress={() => props.remove(props.todo.id)}>X</Text>
+      <FontAwesome5 name="pen" style={styles.edit} />
+      <FontAwesome5 name="times" style={styles.remove} onPress={() => props.remove(props.todo.id)} />
     </View>
   )
 }
@@ -38,7 +40,15 @@ const styles = StyleSheet.create({
   titleCompleted: {
     textDecorationLine: "line-through"
   },
+  edit: {
+    padding: 16,
+    fontSize: 16,
+    color: "#666"
+  },
   remove: {
-    padding: 16
+    padding: 16,
+    fontSize: 22,
+    color: "#EF476F",
+    marginRight: 4
   }
 });
